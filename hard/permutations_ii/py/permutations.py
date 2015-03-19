@@ -15,7 +15,7 @@ class Solution(object):
     """
     # @param num, a list of integer
     # @return a list of lists of integers
-    def permuteUnique(self, num):
+    def permuteUniqueRecur(self, num):
         def permute_recur(n):
             """ Convert our lists to tuples since tuples are hashable
                 and lists are not. This comes in handy later when we
@@ -35,6 +35,10 @@ class Solution(object):
 
         # Convert tuples back to a list for output
         return map(list, unique_permutations)
+
+    def permuteUnique(self, num):
+        from itertools import permutations
+        return map(list, set(permutations(num, len(num))))
 
 
 def main():
